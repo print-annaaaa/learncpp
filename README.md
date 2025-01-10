@@ -1,9 +1,4 @@
-# learncpp progress
-
-
-![Progress](https://progress-bar.xyz/28/)
-
-
+# learncpp learnign journey
 
 ## Introduction 
 👋🏾 I'm Anna and this is the record of my progress through [learncpp][def]. 
@@ -21,7 +16,7 @@ What do I hope comes out of this? Well, for one a robust understanding of C++ ba
 
 Here's a progress bar representing my journey through LearnCpp:
 
-![Progress Bar](https://progress-bar.xyz/0?title=Learning+C%2B%2B)
+![Progress Bar](https://progress-bar.xyz/0)
 
 The progress is updated automatically with every new tag I add corresponding to the sections I complete. As of now, I am at **0%** completion.
 

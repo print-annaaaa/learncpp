@@ -1,0 +1,46 @@
+name: Update Progress Bar
+
+on:
+  push:
+    tags:
+      - 'section-*'  # Trigger workflow on tags like 'section-1', 'section-2', etc.
+
+jobs:
+  update-progress:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install requests  # Install any necessary dependencies
+
+      # Step 4: Calculate progress
+      - name: Calculate progress
+        run: |
+          # Calculate the number of completed sections based on tags
+          TAG_COUNT=$(git tag | grep -E '^section-' | wc -l)
+          TOTAL_SECTIONS=28  # Total sections in the course (adjust if needed)
+          PROGRESS=$(($TAG_COUNT * 100 / $TOTAL_SECTIONS))
+          
+          # Construct the new progress bar URL based on calculated progress
+          PROGRESS_URL="https://progress-bar.xyz/$PROGRESS/?style=flat&show_text=false"
+          
+          # Replace the old progress bar URL in the README with the new one
+          sed -i "s|https://progress-bar.xyz/.*|$PROGRESS_URL|g" README.md
+
+      # Step 5: Commit and push the updated README
+      - name: Commit and push progress update
+        run: |
+          git add README.md
+          git commit -m "Update progress bar"
+          git push origin main  # Push the updated README to the main branch
