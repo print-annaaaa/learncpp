@@ -20,6 +20,9 @@ Here's a progress bar representing my journey through LearnCpp:
 
 The progress is updated automatically with every new tag I add corresponding to the sections I complete. As of now, I am at **0%** completion.
 
+## Notes
+- [Section 1 notes](./1/notes.md)
+
 ## License
 This project is available under the MIT License.
 
